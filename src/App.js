@@ -1,13 +1,21 @@
 
-import { useSelector } from "react-redux";
+import { Home, Login, Public } from "./container/public";
+import { Routes, Route } from "react-router-dom";
+import path from "./ultis/path";
+
 
 function App() {
-  const {test} = useSelector(state => state.app )
-  console.log(test)
+
   return (
-    <div className="text-3xl font-bold underline"> 
-    toi la hoang
-  
+    <div className="">
+      <Routes>
+        <Route path={path.PUBLIC} element={<Public />}>
+          <Route path={path.HOME} element={<Home />} />
+          <Route path={path.PUBLIC} element={<Login />} />
+
+        </Route>
+      </Routes>
+
     </div>
   );
 }
