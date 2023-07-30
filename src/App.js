@@ -1,9 +1,9 @@
 
 function App() {
   return (
-    <div className="App"> toi la hoang
-    
-
+    <div className="text-3xl font-bold underline"> 
+    toi la hoang
+  
     </div>
   );
 }
