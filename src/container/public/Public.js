@@ -5,7 +5,7 @@ import { SlidebarLeft, SlidebarRigth } from '../../components'
 
 const Public = () => {
     return (
-        <div className='w-full flex overflow-y-auto'>
+        <div className='w-full flex bg-[#E5E3DF]'>
             <div className='w-[240px] flex-none border border-blue-500 '>
                 <SlidebarLeft />
 

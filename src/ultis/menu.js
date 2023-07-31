@@ -1,26 +1,27 @@
 import icons from "./icons"
-const { MdOutlineLibraryMusic } = icons
+const { MdOutlineLibraryMusic , ImRadioChecked ,LiaChartLineSolid ,BsFillMusicPlayerFill} = icons
 
 export const slidebarMenu = [
-    {
-        path: "/mymusic",
-        text: "cá nhân",
-        icons: <MdOutlineLibraryMusic size={24} />,
-    },
+  
     {
         path: "",
-        text: "Khám phá",
+        text: "Khám Phá",
         end: true,
-        icons: <MdOutlineLibraryMusic size={24} />,
+        icons: <ImRadioChecked size={24} />,
     },
     {
         path: "/zing-chart",
-        text: "Zingchart",
-        icons: <MdOutlineLibraryMusic size={24} />,
+        text: "#zingchart",
+        icons: <LiaChartLineSolid size={24} />,
     },
     {
-        path: "/follow",
-        text: "Theo dõi",
+        path: "/radio",
+        text: "Radio",
+        icons: <BsFillMusicPlayerFill size={24} />,
+    },
+    {
+        path: "/mymusic",
+        text: "Thư Viện",
         icons: <MdOutlineLibraryMusic size={24} />,
     },
 

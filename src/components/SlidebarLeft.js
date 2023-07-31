@@ -7,7 +7,7 @@ const notActiveStyle = "py-2 px-[25px] text-[#323] text-[13px] before:font-bold 
 const activeStyle = "py-2 px-[25px] text-[#854F4F] text-[13px] before:font-bold flex gap-3 items-center";
 const SlidebarLeft = () => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col bg-[#D9D7D4]'>
       <div className='w-full h-[70px] py-[15px] px-[25px] flex justify-start items-center'>
         <img src={logo} alt="logo" className='w-[120] h-10 ' />
       </div>
