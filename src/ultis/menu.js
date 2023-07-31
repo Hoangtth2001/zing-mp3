@@ -5,22 +5,23 @@ export const slidebarMenu = [
     {
         path: "/mymusic",
         text: "cá nhân",
-        icons: <MdOutlineLibraryMusic />,
+        icons: <MdOutlineLibraryMusic size={24} />,
     },
     {
         path: "",
         text: "Khám phá",
-        icons: <MdOutlineLibraryMusic />,
+        end: true,
+        icons: <MdOutlineLibraryMusic size={24} />,
     },
     {
         path: "/zing-chart",
         text: "Zingchart",
-        icons: <MdOutlineLibraryMusic />,
+        icons: <MdOutlineLibraryMusic size={24} />,
     },
     {
         path: "/follow",
         text: "Theo dõi",
-        icons: <MdOutlineLibraryMusic />,
+        icons: <MdOutlineLibraryMusic size={24} />,
     },
 
 
