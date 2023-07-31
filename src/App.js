@@ -12,7 +12,6 @@ function App() {
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
           <Route path={path.PUBLIC} element={<Login />} />
-
         </Route>
       </Routes>
 
