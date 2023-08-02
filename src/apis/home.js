@@ -5,7 +5,7 @@ export const getHome = () => new Promise(async (resolve, reject) => {
     try {
         const response = await axios(
             {
-                url: "",
+                url: `${process.env.REACT_APP_SERVER_URL}`,
                 method: "GET",
 
             }
