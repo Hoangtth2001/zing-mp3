@@ -1,5 +1,5 @@
 
-import { Home, Login, Public } from "./container/public";
+import { Home, Login, Public ,Mymusic} from "./container/public";
 import { Routes, Route } from "react-router-dom";
 import path from "./ultis/path";
 import { useEffect } from "react";
@@ -19,6 +19,9 @@ function App() {
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
           <Route path={path.STAR} element={<Home />} />
+          <Route path={path.MY_MUSIC} element={<Mymusic />} />
+
+
         </Route>
           <Route path={path.LOGIN} element={<Login />} />
       </Routes>
