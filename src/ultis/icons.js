@@ -6,6 +6,7 @@ import {GoSearch} from 'react-icons/go'
 import {GoDesktopDownload} from "react-icons/go";
 import {BiLogInCircle} from "react-icons/bi";
 import {AiOutlineArrowLeft ,AiOutlineArrowRight} from "react-icons/ai";
+import {FcGoogle} from "react-icons/fc";
 const icons = {
     MdOutlineLibraryMusic,
     ImRadioChecked,
@@ -15,7 +16,8 @@ const icons = {
     GoDesktopDownload,
     BiLogInCircle,
     AiOutlineArrowLeft ,
-    AiOutlineArrowRight
+    AiOutlineArrowRight,
+    FcGoogle
     
 }
 

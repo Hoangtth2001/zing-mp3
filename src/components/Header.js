@@ -1,6 +1,7 @@
 import React from 'react'
 import icons from '../ultis/icons'
 import Search from './Search'
+import { Link } from 'react-router-dom'
 
 const { GoSearch, GoDesktopDownload, BiLogInCircle, AiOutlineArrowLeft,
     AiOutlineArrowRight } = icons
@@ -22,7 +23,7 @@ const Header = () => {
 
             </div>
             <div>
-                dang nhap
+                <Link to = "/login" >LOGIN</Link>
             </div>
 
 

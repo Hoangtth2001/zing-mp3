@@ -18,9 +18,9 @@ function App() {
       <Routes>
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
-          <Route path={path.PUBLIC} element={<Login />} />
           <Route path={path.STAR} element={<Home />} />
         </Route>
+          <Route path={path.LOGIN} element={<Login />} />
       </Routes>
 
     </div>
