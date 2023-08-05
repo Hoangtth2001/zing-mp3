@@ -12,8 +12,8 @@ module.exports = {
                  transform: 'translateX(-500px)'
         },
         '100%': {
-          '-webkit-transform': 'translateX(0px)',
-                  transform:'translateX(0px)'
+          '-webkit-transform': 'translateX(0)',
+                  transform:'translateX(0)'
         }
       },
       animation:
