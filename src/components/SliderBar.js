@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
+import { getArraySlider } from '../ultis/getArrbanner'
+import 'animate.css';
 
 const SliderBar = () => {
   const { banner } = useSelector(state => state.app)
@@ -9,27 +11,28 @@ const SliderBar = () => {
     const sliderElements = document.getElementsByClassName("slider-items")
     let max = 2;
     let min = 0;
-    
+  
     const intervalList = setInterval(() => {
+      const list = getArraySlider(min, max, sliderElements.length)
+      for (let i = 0; i < sliderElements.length; i++) {
 
-      for (let i = 0; i<sliderElements.length ;i++) {
-          if (i <= max && i >= min ) {
-            sliderElements[i].style.display = "block"
-            
-          }
-          else {
-            sliderElements[i].style.display = "none"
+        list.some(item => item === i) ? sliderElements[i].style.display = "block" : sliderElements[i].style.display = "none"
+     sliderElements[i].classList.add('animate_slideInRight')
 
-          }
-        
       }
-      min += 1;
-      max += 1;
-     if(min === 4 && max === 6){
-      min = 0;
-      max = 2;
+
+     
+     if(min === sliderElements.length -1) {
+      min = 0 ;
+     }else{
+      min ++;
      }
-    }, 1000);
+     if(max ===  sliderElements.length-1){
+      max = 0 ;
+     }else{
+      max ++;
+     }
+    }, 2000);
     return () => {
       intervalList && clearInterval(intervalList)
     }
@@ -42,7 +45,8 @@ const SliderBar = () => {
         <img
           key={item.encodeId}
           src={item.banner}
-          className='slider-items object-contain w-1/2 rounded-lg'
+          alt={item.banner}
+          className='slider-items object-contain w-1/3 rounded-lg'
         />
       ))}
     </div>
