@@ -4,13 +4,13 @@ import { provider, auth } from '../../firebase'
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { AuthContext } from '../../store/reducers/AuthContext.js'
-// import { useContext } from 'react'
+import { AuthContext } from '../../store/reducers/AuthContext'
+import { useContext } from 'react'
 
 const { FcGoogle } = icons
 const Login = () => {
 
-  // const {dispatch} = useContext(AuthContext)
+  const {dispatch} = useContext(AuthContext)
   const [error, setError] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -21,9 +21,10 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
+      
         const user = userCredential.user;
         nav("/")
-        // dispatch({type: "LOGIN", payload: user})
+        dispatch({type: "LOGIN", payload: user})
       })
       .catch((error) => {
        setError(true)
@@ -36,7 +37,7 @@ const Login = () => {
       .then((result) => {
         nav("/")
         const user = result.user
-        // dispatch({type: "LOGIN", payload: user})
+        dispatch({type: "LOGIN", payload: user})
       })
       .catch((err) => {
         setError(true)
