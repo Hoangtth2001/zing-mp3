@@ -16,7 +16,7 @@ const Public = () => {
                     <Outlet />
                 </div>
 
-                <div className='w-[329px] flex-none border border-green-500'>
+                <div className='w-[329px] flex-none border border-green-500 animate-slide-left'>
                     <SlidebarRigth />
                 </div>
 

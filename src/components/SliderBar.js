@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
 
-import { useSelector , useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getArraySlider } from '../ultis/getArrbanner'
 import { music } from '../store/actions'
-import 'animate.css'
 
 const SliderBar = () => {
   const { banner } = useSelector(state => state.app)
-  const dispatch = useDispatch()  
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const sliderElements = document.getElementsByClassName("slider-items")
+    const sliderElements = document.getElementsByClassName("slider-item")
     let max = 2;
     let min = 0;
 
@@ -18,9 +17,24 @@ const SliderBar = () => {
       const list = getArraySlider(min, max, sliderElements.length)
       for (let i = 0; i < sliderElements.length; i++) {
         if (list.some(item => item === i)) sliderElements[i].style.display = "block"
-        else sliderElements[i].style.display = "none"
+        else {
+          sliderElements[i].style.display = "none"
+          if(i === max){
+            sliderElements[i].classList.add('animate-slide-right' , 'order-last', 'z-20')
+          }
+          else if(i === min){
+            sliderElements[i].classList.add('animate-slide-left' , 'order-first', 'z-10')
 
+          }
+          else{
+            sliderElements[i].classList.add('animate-slide-left2','order-2', 'z-10' )
+
+          }
+        }
       }
+   
+     
+
       
 
 
@@ -41,12 +55,12 @@ const SliderBar = () => {
 
   }, [])
 
-const hadleClickBanner = (item) => { 
-  if(item?.type === 1) {
-    dispatch(music.setCurrentSongID(item.encodeId))
+  const hadleClickBanner = (item) => {
+    if (item?.type === 1) {
+      dispatch(music.setCurrentSongID(item.encodeId))
 
+    }
   }
- }
 
   return (
 
@@ -56,8 +70,8 @@ const hadleClickBanner = (item) => {
           key={item.encodeId}
           src={item.banner}
           alt={item.banner}
-          onClick={() =>hadleClickBanner(item)}
-          className='slider-items object-contain w-1/3 rounded-lg animate__slideInRight'
+          onClick={() => hadleClickBanner(item)}
+          className='slider-item object-contain w-1/3 rounded-lg '
         />
       ))}
     </div>
