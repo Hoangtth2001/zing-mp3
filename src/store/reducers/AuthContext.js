@@ -10,7 +10,7 @@ export const AuthContextProvider = ({children}) => {
   
 return(
   <AuthContext.Provider value = {{currentUser: state.currentUser , dispatch}}>
-    {children}
+    {children}  
   </AuthContext.Provider> 
 
 )

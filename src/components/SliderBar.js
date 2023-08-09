@@ -32,11 +32,6 @@ const SliderBar = () => {
           }
         }
       }
-   
-     
-
-      
-
 
       if (min === sliderElements.length - 1) {
         min = 0;
