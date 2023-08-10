@@ -1,49 +1,29 @@
-import { list, ref } from 'firebase/storage'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { storage } from '../firebase'
-import { getDownloadURL, listAll } from 'firebase/storage'
+
 import icons from '../ultis/icons'
 import { apisMusic } from "../apis"
+import { apisImgPlayers } from '../apis'
+// import { set } from 'firebase/database'
+
 
 const { AiOutlineHeart, AiFillHeart, BiDotsHorizontalRounded } = icons;
 const Player = () => {
 
-    const musicRef = ref(storage, 'musics')
-    const imgMusicRef = ref(storage, "img_music")
-
-    const [musicURL, setMusicURL] = useState([])
-    const [imgMusic, setImgMusic] = useState([])
     const [listContent, setListContent] = useState('')
-
+    const [lisImgandPlayer, setLisImgandPlayer] = useState("")
     useEffect(() => {
-        let isMounted = true; // To track if the component is still mounted
-        apisMusic.getinforMusic().then((arrMusicContent) => {
-            setListContent(arrMusicContent)
-        })
+        let isMounted = true;
+        if (isMounted) {
+            apisMusic.getinforMusic().then((arrMusicContent) => {
+                setListContent(arrMusicContent)
+            })
+            apisImgPlayers.getPlayerAndImg().then((arrImgPlayers) => {
+                setLisImgandPlayer(arrImgPlayers)
+            })
+        }
 
-        listAll(musicRef)
-            .then((music) => {
-                // console.log(music.items);
-                const promises = music.items.map((item) => getDownloadURL(item));
-                Promise.all(promises).then((urls) => {
-                    if (isMounted) {
-                        setMusicURL(urls);
-                    }
-                });
-            }
-            );
-        listAll(imgMusicRef)
-            .then((img) => {
-                // console.log(img);
-                const promises = img.items.map((item) => getDownloadURL(item));
-                Promise.all(promises).then((urls) => {
-                    if (isMounted) {
-                        setImgMusic(urls);
-                    }
-                });
-            }
-            );
+
         // Cleanup function to set isMounted to false when the component unmounts
         return () => {
             isMounted = false;
@@ -52,13 +32,13 @@ const Player = () => {
 
     const listMusicInfor = []
 
-    // console.log( 'inforMusic: ' , inforMusic)
+    console.log('inforMusic: ', listMusicInfor)
 
-    if (musicURL.length === imgMusic.length && imgMusic.length === listContent.length) {
-        for (let i in musicURL) {
+    if (lisImgandPlayer.length === listContent.length) {
+        for (let i in lisImgandPlayer) {
             const musicAndImg = {
-                'url': musicURL[i],
-                'img': imgMusic[i],
+                'url': lisImgandPlayer[i].url,
+                'img': lisImgandPlayer[i].img,
                 'singer': listContent[i].singer,
                 'author': listContent[i].author,
                 'title': listContent[i].title,
@@ -67,9 +47,6 @@ const Player = () => {
             listMusicInfor.push(musicAndImg);
         }
     }
-
- console.log(listMusicInfor.singer);
-
     const { currentSongID } = useSelector(state => state.music)
     console.log(currentSongID)
     return (
@@ -86,7 +63,7 @@ const Player = () => {
                         </div>
                         <div className='flex pl-2'>
                             <span><AiOutlineHeart size={16} /></span>
-                            <span><BiDotsHorizontalRounded size={16}/></span>
+                            <span><BiDotsHorizontalRounded size={16} /></span>
                         </div>
                     </div>
                     <div className='w-[500px] flex-auto border border-red-500'>
