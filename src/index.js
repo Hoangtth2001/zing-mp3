@@ -7,18 +7,22 @@ import reduxConfig from "./redux";
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react'
 import { AuthContextProvider } from './store/reducers/AuthContext';
-
+import { MusicProvider } from './store/reducers/MusicContext';
 const { store, persistor } = reduxConfig()
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor} >
-      <AuthContextProvider>
-        <BrowserRouter >
-          <App />
-        </BrowserRouter>
-      </AuthContextProvider>
-    </PersistGate>
+ 
+      <MusicProvider>
+        <AuthContextProvider>
+          <BrowserRouter >
+            <App />
+          </BrowserRouter>
+        </AuthContextProvider>
+      </MusicProvider>
+
+
   </Provider>
 );
 

@@ -9,9 +9,8 @@ import { AuthContext } from "./store/reducers/AuthContext";
 import { useContext } from "react";
 
 
+
 function App() {
-
-
 
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext)

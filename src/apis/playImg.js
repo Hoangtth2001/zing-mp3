@@ -18,7 +18,6 @@ export const getPlayerAndImg = async () => {
                 const musicAndImg = {
                     'url': musicURLs[i],
                     'img': imgURLs[i],
-
                 }
                 listMusicInfor.push(musicAndImg);
             }
