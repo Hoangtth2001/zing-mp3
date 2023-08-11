@@ -13,9 +13,25 @@ import { useMusicContext } from '../store/reducers/MusicContext'
 const { AiOutlineHeart, AiFillHeart, BiDotsHorizontalRounded } = icons;
 
 const Player = () => {
+    // const [storeCurrentMusicId, setcurrentMusicId] = useState("")
+    const { listMusicInfor, currentMusicId, handlePlayMusic } = useMusicContext();
 
-    const { listMusicInfor, currentMusicId } = useMusicContext();
-    console.log(currentMusicId)
+
+
+    const handleClicknext = () => {
+        if (currentMusicId === listMusicInfor.length - 1) {
+            handlePlayMusic(0)
+        }
+        else
+            handlePlayMusic(currentMusicId + 1)
+    }
+    const handleClickprevious = () => {
+        if (currentMusicId === 0) {
+            handlePlayMusic(currentMusicId)
+        }
+        else
+            handlePlayMusic(currentMusicId - 1)
+    }
     const currentMusic = listMusicInfor.find((item) => item.id === currentMusicId)
 
 
@@ -42,6 +58,8 @@ const Player = () => {
                         <div >
                             <AudioPlayer
                                 customVolumeControls={[]}
+                                onClickNext={handleClicknext}
+                                onClickPrevious={handleClickprevious}
                                 style={{
                                     backgroundColor: "#DEDAD1",
                                 }} src={currentMusic.url} showSkipControls={true} />

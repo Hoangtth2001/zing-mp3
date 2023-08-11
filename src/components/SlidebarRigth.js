@@ -14,6 +14,7 @@ const SlidebarRigth = () => {
   // const [musicId, setMusicId] = useState(0)
   const { listMusicInfor, handlePlayMusic, currentMusicId} = useMusicContext();
 
+
   return (
 
     <div className='flex flex-col text-xs w-full'>
@@ -30,9 +31,8 @@ const SlidebarRigth = () => {
         {listMusicInfor.map((item, index) => (
           <div key={index}
 
-            className={`w-[375px] flex-auto border border-red-500 flex items-center  gap-4 hover:bg-[#CECCC9] ${item.id === currentMusicId  && 'text-red-500 bg-gray-200'}`}
+            className={`w-[375px] flex-auto border border-red-500 flex items-center  gap-4 hover:bg-[#CECCC9] ${ item.id === currentMusicId  && 'text-red-500 bg-gray-200'}`}
           >
-
             <div>
               <img src={item.img} alt='thumnail' className='w-16 h-16 object-cover rounded-md'
                 onClick={() => handlePlayMusic(item.id)}
@@ -42,7 +42,7 @@ const SlidebarRigth = () => {
               <span className={`font-semibold text-gray-700 text-sm '}`}>{item.title}</span>
               <span className='text-sm text-gray-500'>{item.singer}</span>
             </div>
-            <div className='flex pl-16 gap-2 '>
+            <div className='flex gap-2' style={{ position: 'absolute', right: 4 }}>
               <span><AiOutlineHeart size={16} /></span>
               <span><BiDotsHorizontalRounded size={16} /></span>
             </div>
