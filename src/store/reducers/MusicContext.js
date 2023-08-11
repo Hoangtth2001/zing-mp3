@@ -10,6 +10,7 @@ export const MusicProvider = ({ children }) => {
     const [listMusicInfor, setListMusicInfor] = useState([]);
     const [listContent, setListContent] = useState([]);
     const [lisImgandPlayer, setLisImgandPlayer] = useState([]);
+    const [currentMusicId, setCurrentMusicId] = useState(null);
 
     useEffect(() => {
         let isMounted = true;
@@ -42,9 +43,13 @@ export const MusicProvider = ({ children }) => {
             setListMusicInfor(musicInfo);
         }
     }, [lisImgandPlayer, listContent]);
-
+    const handlePlayMusic = (musicId) => {
+        setCurrentMusicId(musicId);
+      };
     const contextValue = {
         listMusicInfor,
+        handlePlayMusic,
+        currentMusicId, 
     };
 
     return (

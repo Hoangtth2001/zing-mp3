@@ -4,12 +4,15 @@ import { useState } from 'react'
 import icons from '../ultis/icons'
 
 import { useMusicContext } from '../store/reducers/MusicContext'
+import { music } from '../store/actions'
+
+
 
 const { BiDotsHorizontalRounded, AiOutlineHeart } = icons
 
 const SlidebarRigth = () => {
-
-  const { listMusicInfor } = useMusicContext();
+  // const [musicId, setMusicId] = useState(0)
+  const { listMusicInfor, handlePlayMusic, currentMusicId} = useMusicContext();
 
   return (
 
@@ -25,10 +28,14 @@ const SlidebarRigth = () => {
 
       <div className=''>
         {listMusicInfor.map((item, index) => (
-          <div key={index} className='w-[375px] flex-auto border border-red-500 flex items-center gap-4 hover:bg-[#CECCC9]'>
+          <div key={index}
+
+            className={`w-[375px] flex-auto border border-red-500 flex items-center  gap-4 hover:bg-[#CECCC9] ${item.id === currentMusicId  && 'text-red-500 bg-gray-200'}`}
+          >
+
             <div>
               <img src={item.img} alt='thumnail' className='w-16 h-16 object-cover rounded-md'
-              onClick={()=> {}}
+                onClick={() => handlePlayMusic(item.id)}
               />
             </div>
             <div className='flex flex-col '>

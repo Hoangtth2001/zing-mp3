@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 import icons from '../ultis/icons'
 import { apisMusic } from "../apis"
@@ -14,21 +14,23 @@ const { AiOutlineHeart, AiFillHeart, BiDotsHorizontalRounded } = icons;
 
 const Player = () => {
 
-    const { listMusicInfor } = useMusicContext();
-    const { currentSongID } = useSelector(state => state.music)
-    
-    console.log(currentSongID)
+    const { listMusicInfor, currentMusicId } = useMusicContext();
+    console.log(currentMusicId)
+    const currentMusic = listMusicInfor.find((item) => item.id === currentMusicId)
+
+
     return (
         <div>
-            {listMusicInfor.map((music, index) => (
-                <div key={index} className='bg-[#DEDAD1] px-5 h-full min-h-[90px] flex'>
+            {currentMusic && (
+
+                <div className='bg-[#DEDAD1] px-5 h-full min-h-[90px] flex'>
                     <div className='w-[375px] flex-auto border border-red-500 flex items-center gap-4'>
                         <div>
-                            <img src={music.img} alt='thumnail' className='w-16 h-16 object-cover rounded-md' />
+                            <img src={currentMusic.img} alt='thumnail' className='w-16 h-16 object-cover rounded-md' />
                         </div>
                         <div className='flex flex-col '>
-                            <span className='font-semibold text-gray-700 text-sm'>{music.title}</span>
-                            <span className='text-sm text-gray-500'>{music.singer}</span>
+                            <span className='font-semibold text-gray-700 text-sm'>{currentMusic.title}</span>
+                            <span className='text-sm text-gray-500'>{currentMusic.singer}</span>
                         </div>
                         <div className='flex pl-2 gap-2'>
                             <span><AiOutlineHeart size={16} /></span>
@@ -39,10 +41,10 @@ const Player = () => {
 
                         <div >
                             <AudioPlayer
-                           customVolumeControls={[]}
-                               style={{
-                                backgroundColor: "#DEDAD1",
-                               }} src={music.url} showSkipControls={true} />
+                                customVolumeControls={[]}
+                                style={{
+                                    backgroundColor: "#DEDAD1",
+                                }} src={currentMusic.url} showSkipControls={true} />
                         </div>
                     </div>
                     <div className='w-[375px] flex-auto border border-red-500'>
@@ -50,7 +52,8 @@ const Player = () => {
 
                     </div>
                 </div>
-            ))}
+            )}
+
         </div>
 
     )
